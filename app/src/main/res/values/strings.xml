@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">PhPork GPS Logger</string>
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="action_help">Help</string>
+    <string name="action_back">Back</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+
+    <string name="title1">PORK GPS TRACKER</string>
+    <string name="desctitle1">Welcome to Pork Traceability</string>
+    <string name="desctitle2">GPS Tutorials</string>
+
+    <string name="slide_2_title">START LOG</string>
+    <string name="slide_2_desc">Start Logging </string>
+
+    <string name="slide_3_title">GPS Viewer</string>
+    <string name="slide_3_desc">Display Log Details</string>
+
+    <string name="slide_4_title">GPS MAP Viewer</string>
+    <string name="slide_4_desc">View via Google Maps</string>
+
+    <string name="slide_5_title">Load Map Data</string>
+    <string name="slide_5_desc">Get Map data from Database</string>
+
+    <string name="play_again_desc">Review Tutorial</string>
+    <string name="play_again">Play Again</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_start_log">StartLog</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps2">Map</string>
+</resources>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:minHeight="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    local:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/action_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            local:fabSize="mini"
+            android:src="@drawable/back"
+            android:clickable="true" />
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GPS Map"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:gravity="center"
+            android:layout_marginStart="10dp" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/viewdata"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/view1"
+            local:fabSize="mini"
+            android:layout_marginStart="15dp"
+            android:clickable="true" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/export"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/export"
+            local:fabSize="mini"
+            android:layout_marginStart="5dp"
+            android:clickable="true" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/action_open"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/open"
+            local:fabSize="mini"
+            android:layout_marginStart="5dp"
+            android:clickable="true" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/action_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/delete"
+            local:fabSize="mini"
+            android:layout_marginStart="5dp"
+            android:clickable="true" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.Toolbar>
+
+
