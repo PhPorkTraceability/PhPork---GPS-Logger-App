@@ -31,11 +31,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SplashOut" />
         <activity android:name=".StartLog2" />
+        <activity android:name=".ExportData" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

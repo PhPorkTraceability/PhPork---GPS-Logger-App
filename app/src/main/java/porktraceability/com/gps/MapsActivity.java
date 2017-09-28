@@ -195,91 +195,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 File file = new File(mPath);//creates a kml file with the log name as the file name
 
                 if(data) {
-                    try {
-                        FileOutputStream stream = new FileOutputStream(file, false);
-                        Cursor res = databaseHelper.getAllData();
-                        //writes the kml file. version 2.2
-                        stream.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n".getBytes());
-                        stream.write("<kml xmlns=\"http://www.opengis.net/kml/2.2\">\n".getBytes());
-                        stream.write("<Document>\n".getBytes());
-
-                        //specifies the style of the polyline when being rendered
-                        stream.write("<Style id=\"yellowLineGreenPoly\">\n".getBytes());
-                        stream.write("<LineStyle>\n".getBytes());
-                        stream.write("<color>7f00ffff</color>\n".getBytes());
-                        stream.write("<width>5</width>\n".getBytes());
-                        stream.write("</LineStyle>\n".getBytes());
-                        stream.write("</Style>\n".getBytes());
-
-                        //creates the polyline
-                        stream.write("<Placemark>\n".getBytes());
-                        stream.write("<styleUrl>#yellowLineGreenPoly</styleUrl>\n".getBytes());
-                        stream.write("<LineString>\n".getBytes());
-                        stream.write("<extrude>1</extrude>\n".getBytes());
-                        stream.write("<tesselate>1</tesselate>\n".getBytes());
-                        stream.write("<altitudeMode>absolute</altitudeMode>\n".getBytes());
-                        stream.write("<coordinates>\n".getBytes());
-                        while (res.moveToNext()) {
-                            if (res.getString(7).equals(selected)) {
-                                String string = String.valueOf(res.getDouble(4)) + "," + String.valueOf(res.getDouble(3)) + ",0\n";
-                                stream.write(string.getBytes());
-                            }
-                        }
-                        stream.write("</coordinates>\n".getBytes());
-                        stream.write("</LineString>\n".getBytes());
-                        stream.write("</Placemark>\n".getBytes());
-
-                        res.moveToFirst();//cursor is reset
-
-                        //adds a marker on the start of the trip
-                        stream.write("<Placemark>\n".getBytes());
-                        stream.write("<name>START</name>\n".getBytes());
-                        stream.write("<Point>\n".getBytes());
-                        stream.write("<coordinates>\n".getBytes());
-                        String temp = String.valueOf(start.longitude) + "," + String.valueOf(start.latitude) + ",0\n";
-                        stream.write(temp.getBytes());
-                        stream.write("</coordinates>\n".getBytes());
-                        stream.write("</Point>\n".getBytes());
-                        stream.write("</Placemark>\n".getBytes());
-
-                        while (res.moveToNext()){
-                            if(res.getString(7).equals(selected)) {
-                                if(res.getInt(1) % 10 == 0) {
-                                    //adds markers every 10 log points
-                                    stream.write("<Placemark>\n".getBytes());
-                                    stream.write("<name>START</name>\n".getBytes());
-                                    stream.write("<Point>\n".getBytes());
-                                    stream.write("<coordinates>\n".getBytes());
-                                    String string = String.valueOf(res.getDouble(4)) + "," + String.valueOf(res.getDouble(3)) + ",0\n";
-                                    stream.write(string.getBytes());
-                                    stream.write("</coordinates>\n".getBytes());
-                                    stream.write("</Point>\n".getBytes());
-                                    stream.write("</Placemark>\n".getBytes());
-                                }
-                            }
-                        }
-
-                        //adds a marker at the end of the trip
-                        stream.write("<Placemark>\n".getBytes());
-                        stream.write("<name>END</name>\n".getBytes());
-                        stream.write("<Point>\n".getBytes());
-                        stream.write("<coordinates>\n".getBytes());
-                        String temp1 = String.valueOf(end.longitude) + "," + String.valueOf(end.latitude) + ",0\n";
-                        stream.write(temp1.getBytes());
-                        stream.write("</coordinates>\n".getBytes());
-                        stream.write("</Point>\n".getBytes());
-                        stream.write("</Placemark>\n".getBytes());
-
-                        stream.write("</Document>\n".getBytes());
-                        stream.write("</kml>\n".getBytes());
-
-                        stream.flush();
-                        stream.close();
-
-                        Toast.makeText(MapsActivity.this, "Map Data Saved", Toast.LENGTH_SHORT).show();
-                    } catch (Throwable e) {
-                        e.printStackTrace();
-                    }
+                    ExportData exportData = new ExportData(start, end, selected, file);
+                    Intent i = new Intent();
+                    i.setClass(MapsActivity.this, exportData.getClass());
+                    startActivity(i);
                 } else {
                     Toast.makeText(MapsActivity.this, "No Data Selected", Toast.LENGTH_LONG).show();
                 }
@@ -410,8 +329,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             {
                 // TODO Auto-generated method stub
                 bitmap[0] = snapshot;
-
-                OutputStream fout;
 
                 try {
                     // image naming and path  to include sd card  appending name you choose for file
